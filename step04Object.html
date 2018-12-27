@@ -1,0 +1,127 @@
+<!doctype html>     <!---->
+
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+
+</head>
+
+<body>
+
+        <h2>Java Script Object</h2>
+
+        1. 객체 기반 언어<br>
+        2. 내장 객체 존재<br>
+        3. 사용자 정의 객체<br>
+        <br><br><br>
+
+        * 객체 생성 방법<br>
+        1. object 생성자<br>
+        2. 객체 리터럴 방식 활용<br>
+
+        <script>
+            // 1. 객체 생성
+            console.log("--1. object 생성자--")
+
+            // 객체 생성
+            var data = new Object();
+
+            // 멤버변수 선언 밑 값으로 초기화
+            data.new = '희건';
+            data.age =  27;
+            console.log(data.name+' '+data.age);
+
+            console.log(typeof data);  // 타입 출력
+            console.log("------------------------")
+        
+            console.log("--2. 객체 리터럴 방식의 객체 생성--");
+            var person = { 
+            
+                name:"희건2",     //변수명에는 따옴표 X
+                age:27 
+            }
+            console.log(person.name+"형의 나이는 5일 뒤에 "+person.age)
+            console.log("##########다른방법으로 Job변수 추가###########")
+            person.job = 'Naver';
+            console.log(person.job);
+            console.log(person["job"])
+
+
+
+            // 객체가 보유한 속성(property)명만 출력
+            console.log("**Property명으로 value값 출력**")
+
+            console.log("#########반복문으로 키값 출력############")
+            for(key in person){
+                console.log(key);
+            }
+            console.log("#########반복문으로 밸류값 출력############")
+            for(key in person){
+                console.log(key, person[key]);
+            }
+
+            // person의 age라는 property 삭제하기
+            // delete
+            delete person.age;
+            console.log(person.age)
+
+            console.log("** 선택된 자**")
+            var person = {
+                name : "송병길",
+                getName : function(){
+                    return this.name;
+                }
+            };
+
+
+            //송병길 출력하려면??
+            //console.log(person.getName);   => 함수 호출이 아니다
+            console.log(person.getName());
+
+        </script>
+
+    
+        <script>
+            console.log("================================")
+            console.log("** 구글 차트의 일부 코드 활용 **")
+            var options = {
+                title : "Company Performance",
+                hAxis : {title : "Year", titleTextStyle : {color : '#333'}},
+                vAxis : {minValue : 0}
+            };
+
+            // 각 property가 보유한 데이터값들 출력해보기
+            console.log(options.title);
+            console.log(options.hAxis);
+            console.log(options.hAxis.title);
+            console.log(options.hAxis.titleTextStyle.color);
+
+
+
+
+
+            console.log("================================")
+            console.log("** 구글 차트 배열 데이터 **")
+            var arrayData = [
+                ['Year', 'Sales', 'Expenses'],
+                ['2013',  1000,      400],
+                ['2014',  1170,      460],
+                ['2015',  660,       1120],
+                ['2016',  1030,      540]
+            ];
+                console.log(arrayData[4][1]);
+
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+

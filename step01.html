@@ -1,0 +1,52 @@
+<!doctype html>   <!-- 기본 틀은 한글이 잘 안깨지는 페이지에서 가져오는  것이 좋다 -->   <!---->
+
+<html lang="ko">
+    <head>
+    <meta charset="utf-8">
+
+    <script> // 스크립트 태그는 어디에 와도 상관 없지만 바디 전에 쓰는게 좋다
+        /* js변수 선언 및 활용 */
+        var name = '송병길';  //전역변수
+        
+        //사용자정의 함수
+        function myFun(){
+                var var1 = "var1"; //로컬
+                var2 = "var2";
+                document.write(var1+"<br>");
+                document.write(var2+"<br>");
+
+            }
+
+
+    </script>
+
+    </head>
+    <body>
+        <script>
+            //alert(name);
+            document.write(name+"<br>");
+            console.log(name);  //디버깅용 함수
+
+            myFun();
+            document.write("<hr>");  //horizen 줄 긋기
+
+            function myFun2(){
+                document.write(name);
+                document.write(var2);
+            }
+            myFun2();
+            document.write("<hr>");
+
+            function myFun3(v){
+                document.write(v+"<br>");
+            }
+            myFun3(1);
+            myFun3("문자열")
+            myFun3(1, "문자열")  // 파라미터 2개 넣으면 에러 띄우고 + 1개만 인식해서 함수 호출
+            myFun3()
+            
+        </script>>
+
+    </body>
+
+</html>
