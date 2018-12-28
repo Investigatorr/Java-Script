@@ -1,0 +1,86 @@
+<!doctype html>   <!-- 기본 틀은 한글이 잘 안깨지는 페이지에서 가져오는  것이 좋다 -->   <!---->
+
+<html lang="ko">
+    <head>
+    <meta charset="utf-8">
+        <title>step07JSON.html</title>
+    </head>
+        <body>
+            <h2>JSON 학습</h2>
+
+            1. JSON : Java Script Object Notation<br>
+            2. 용도 : 경량급 text기반의 데이터 포맷으로 Java Script의 객체임<br>
+            3. 장점 : 다른기종(os / 서버 / 언저)간 데이터 호환에 사용<br>
+            4. 사용 빈도 : 서버에서 클라이언트로 응답시에 굉장히 많이 사용<br>
+            5. 참고사항 : <br>
+                일반 text -> csv -> JSON 형채 순으로 권장
+
+            키와 밸류만 쌍따옴표로!!!
+            <br><br><br>
+            <font color='red'>
+                <b>JSON 형태로 제공시 반드시 ket:value는 쌍따옴표로 권장</b><br>
+                1. JSON.parse()로 처리! 그러나,,, "랑 '랑 차이가 크다<br>
+                2. eval()로 처리 : 쌍따옴표 / 1따옴표 무관<br>
+            </font>
+    
+            
+
+        <script>
+            console.log("============dict 형식============");
+
+            obj1 = {
+                name : '희건'
+            };
+            console.log(obj1.name);
+            console.log(obj1['name']);
+
+
+            console.log("============제이슨 형식 1따옴============");
+
+            obj2 = {
+                'name' : '희건'
+            };
+            console.log(obj2.name);
+            console.log(obj2['name']);
+
+
+            console.log("============제이슨 형식 쌍따옴============");
+
+            obj3 = {
+                "name" : "희건"
+            };
+            console.log(obj3.name);
+            console.log(obj3['name']);
+
+
+            console.log("============서버에서 받은 데이터라 가정 : 가공(파싱)하기 전============");
+
+            obj4 = "{'name' : '희건'}";
+            console.log(obj4.name);
+            console.log(obj4['name']);
+
+            
+            console.log("============서버에서 받은 데이터라 가정 : eval로 가공============");
+
+            obj5 = "{'name' : '희건'}";
+            obj5 = eval("("+obj5+")");     // eval("("+ +")")
+            console.log(obj5.name);
+            console.log(obj5['name']);
+            
+
+            console.log("============서버에서 받은 데이터라 가정 : JSON.parse()로 가공============");
+
+            obj6 = '{"name" : "희건"}';
+            obj6 = JSON.parse(obj6);
+            console.log(obj6.name);
+            console.log(obj6['name']);
+
+
+
+
+        </script>
+
+
+        </body>
+
+    </html>

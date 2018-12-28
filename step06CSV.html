@@ -1,0 +1,197 @@
+<!DOCTYPE>
+<html lang="ko">
+    <head>
+        <meta charset="utf-8">
+        <title>step06CSV.html</title>
+
+        <style>
+                body {font-family: Arial, Helvetica, sans-serif;}
+                * {box-sizing: border-box;}
+                
+                /* Full-width input fields */
+                input[type=text], input[type=text] {
+                  width: 100%;
+                  padding: 15px;
+                  margin: 5px 0 22px 0;
+                  display: inline-block;
+                  border: none;
+                  background: #f1f1f1;
+                }
+                
+                /* Add a background color when the inputs get focus */
+                input[type=text]:focus, input[type=text]:focus {
+                  background-color: #ddd;
+                  outline: none;
+                }
+                
+                /* Set a style for all buttons */
+                button {
+                  background-color: #4CAF50;
+                  color: white;
+                  padding: 14px 20px;
+                  margin: 8px 0;
+                  border: none;
+                  cursor: pointer;
+                  width: 100%;
+                  opacity: 0.9;
+                }
+                
+                button:hover {
+                  opacity:1;
+                }
+                
+                /* Extra styles for the cancel button */
+                .cancelbtn {
+                  padding: 14px 20px;
+                  background-color: #f44336;
+                }
+                
+                /* Float cancel and signup buttons and add an equal width */
+                .cancelbtn, .signupbtn {
+                  float: left;
+                  width: 50%;
+                }
+                
+                /* Add padding to container elements */
+                .container {
+                  padding: 16px;
+                }
+                
+                /* The Modal (background) */
+                .modal {
+                  display: none; /* Hidden by default */
+                  position: fixed; /* Stay in place */
+                  z-index: 1; /* Sit on top */
+                  left: 0;
+                  top: 0;
+                  width: 100%; /* Full width */
+                  height: 100%; /* Full height */
+                  overflow: auto; /* Enable scroll if needed */
+                  background-color: #474e5d;
+                  padding-top: 50px;
+                }
+                
+                /* Modal Content/Box */
+                .modal-content {
+                  background-color: #fefefe;
+                  margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+                  border: 1px solid #888;
+                  width: 80%; /* Could be more or less, depending on screen size */
+                }
+                
+                /* Style the horizontal ruler */
+                hr {
+                  border: 1px solid #f1f1f1;
+                  margin-bottom: 25px;
+                }
+                 
+                /* The Close Button (x) */
+                .close {
+                  position: absolute;
+                  right: 35px;
+                  top: 15px;
+                  font-size: 40px;
+                  font-weight: bold;
+                  color: #f1f1f1;
+                }
+                
+                .close:hover,
+                .close:focus {
+                  color: #f44336;
+                  cursor: pointer;
+                }
+                
+                /* Clear floats */
+                .clearfix::after {
+                  content: "";
+                  clear: both;
+                  display: table;
+                }
+                
+                /* Change styles for cancel button and signup button on extra small screens */
+                @media screen and (max-width: 300px) {
+                  .cancelbtn, .signupbtn {
+                     width: 100%;
+                  }
+                }
+                </style>
+                <body>
+                
+                <h2>희건이형에게 하고싶은 말</h2>
+                
+                <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">메시지 보내기</button>
+                
+                <div id="id01" class="modal">
+                  <span onclick="document.getElementById('id01').style.display='none';erase()" class="close" title="Close Modal">&times;</span>
+                  <form class="modal-content" action="#">
+                    <div class="container">
+                      <h1>형 진짜....</h1>
+                      <p>꾹 참아왔던 말을 전해주세요</p>
+                      <hr>
+                      <label><b>첫번째 메시지</b></label>
+                      <input type="text" id="first">
+                
+                      <label><b>두번째 메시지</b></label>
+                      <input type="text" id="second">
+                
+                      <label><b>세번째 메시지</b></label>
+                      <input type="text" id="third">
+                      
+                      <label><b>마지막 메시지</b></label>
+                      <input type="text" id="last">
+                
+                      <p>진성변태참변태 마음절도범 <a href="http://warning.or.kr/" style="color:dodgerblue">신고하기!</a></p><hr>
+                        <!--onclick ~~을 실행하겠다~~ 함수 등등-->
+                      <p><a href="https://www.instagram.com/heegoori/?hl=ko" style="color:dodgerblue">신상 확인하기</a></p>
+                
+                      <div class="clearfix">
+                        <button type="button" onclick="document.getElementById('id01').style.display='none';erase()" class="cancelbtn">취소</button>
+                        <button type="button" onclick="msgView()" class="signupbtn">보내기</button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+                
+                <script>
+
+                    function msgView(){
+                        message = "희건이형,머릿속에는,대체 무엇이,들어있을까?!"
+                        data = message.split(",");
+                        document.getElementById("first").value = data[0];
+                        document.getElementById("second").value = data[1];
+                        document.getElementById("third").value = data[2];
+                        document.getElementById("last").value = data[3];
+                    }
+
+
+                    function erase(){
+                        document.getElementById("first").value = "";
+                        document.getElementById("second").value = "";
+                        document.getElementById("third").value = "";
+                        document.getElementById("last").value = "";
+                    }
+
+
+                // Get the modal
+                var modal = document.getElementById('id01');
+                
+                // When the user clicks anywhere outside of the modal, close it
+                window.onclick = function(event) {
+                  if (event.target == modal) {
+                    modal.style.display = "none";
+                  }
+                }
+                </script>
+                
+    </body>
+
+</html>
+
+<!--
+    1. 데이터 구조는 csv구조
+    2. 데이터 분해
+    3. 각 input tag에 출력
+    4. w3에서 제공하는 css ui를 병행사용
+    5. icon 그려보기
+
+-->

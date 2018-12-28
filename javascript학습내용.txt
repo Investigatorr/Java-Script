@@ -62,27 +62,166 @@ Java script
 				- document.getElementById("nameView").value="송병길"
 
 		2. javascript 자체 지원 함수
+
 		3. 사용자정의 함수
 			1. alert() 함수 : 중간중간에 실행되는 팝업창이라 디버깅할때도 씀
 				<script>
 				alert("Hello! I am an alert box!");
 				</script>
 				
-7. javascript
-	1. 변수
-		1. 타입없이 선언
-		2. 실시간 가변적인 타입으로 변경이 가능
-		3. 선언 문법
-			1. var
-				1. 전역변수 영역에 선언 시 - 전역변수
-				2. 함수 내부에 var로 변수 선언시 - 로컬변수
-				
-			2. var없이 선언
-				1. 전역변수 영역에 선언 시 - 전역변수 (위치가 전역이라)
-				2. 함수 내부에 선언시 - 전역 변수
-				
-	2. 함수
-		- parameter 갯수와 무관하게 호출 가능
+			1. function 함수를
+			
+			2. 자바스크립트 리터럴 형태의 객체내의 함수를
+				data = {
+					property명 : 'value',
+					getName : function(){
+					}
+
+
+7. java script의 문법 특징
+   1. 변수
+      1. 타입없이 선언
+      2. 실시간 가변적인 타입으로 변경이 가능
+      3. 선언 문법
+         1. var
+            1. 전연 변수에 선언시 - 전역 변수   ( var1="ㅇㅇ";)
+            2. 함수 내부에 var로 변수 선언시 - 로컬 변수 ( var var1="ㅇㅇ";)
+            
+         2. var 없이 선언
+            1. 전역 변수 영역에 선언시 - 전역변수
+            2. 함수 내부에 선언시 - 전역 변수
+            
+         결론. 함수 내부에 var로 선언할때만 로컬!!
+   2. 함수
+      - parameter 개수와 무관하게 호출 가능
+      
+      
+8. review
+   1. 사용 가능한 함수들
+      1. 브라우저 내장 객체가 제공
+         document - write(), getElementById(), alert()
+         ...
+
+      2. java script자체 제공
+         - split() ...
+         - https://www.w3schools.com/jsref/jsref_obj
+      3. 사용자 정의
+         1. function 함수 ([..]){[..]}
+         2. 자바스크립트 리터럴 형태의 객체내의 함수
+            data = {
+               property명 : 'value'
+               getName : function([..]){[..]}
+            }
+         3. 익명 함수
+            - 이름 없음, 재사용성 고려 안함
+            - 권장 :
+               브라우저 </body>가 실행되자마자
+               이벤트성 js 실행 로직이 있을 경우 주로 사용 
+            window.onload = function() {
+               로딩 직후 처리 로직
+            }
+   2. 데이터
+      1. CSV 포멧 데이터 처리 연습
+         1. 결측치 여부? 
+         2. 사용하고자 하는 데이터에 문제가 있나? 업나?
+         ...
+            : 전처리(서버단에서 처리)
+            : 
+      2. JSON 형태의 데이터 포멧 처리 연습
+      3. 배열 형태의 데이터 포멧 처리 연습 
+
+9. 비동기 기술 추가 학습
+   1. 서버와 클라이언트간에 실시간 요청, 응답 진행은 되나
+      화면 갱신. 즉 reflash 없이 통신하는 기술
+   2. 주의 사항
+      - 인증 처럼 완벽한 인증 후에만 실행해야 하는 로직들은
+        비동기 처리 적용 고려 필수
+   3. 필요 기술셋
+      1. 서버의 응답 로직
+      2. java script
+         - 비동기 처리 전담 객체 존재
+   4. 비동기 대표 로직
+      - 검색
+	
+10. Java Script 객체
+	1. new object()로 생성
+	2. 객체 리터럴 방식
+		data = {
+			name : "희건",
+			age : 27
+			}
+			
+11. JSON 객체 (데이터 표현에 특화된 객체)
+	data = {
+		'name' : '희건',
+		'age' : 27,
+		}
+	
+12. 비동기  처리기술 암기사항
+	1. java script 내에 비동기 전담 객체 존재
+		- XMLHttpRequest(xhr)
+	2. 쟝고
+		- ie 6까지 : XMLHttpRequest 미존재
+					windowActive라는 API로 계속 
+		- ie 7까지 ~ : XMLHttpRequest 추가 + windowActive 둘다 공존
+		- non-ie :
+	
+	3. 요청 데이터 ~ HttpRequset
+	   응답 데이터 ~ HttpResponse
+	
+		XMLHttpRequest 기능
+			1. 서버에 요청도 하고 서버로부터 응답되는 데이터 예측
+			2. 응답 상태 번호값 획득해서 체크
+			 
+	4. 응답상태 확인
+		1. 404 : 요청 url에 해당하는 자원이 서버에 없을 때
+		2. 200 : 응답 성공
+		3. 500 : 서버 개발 또는 서버 시스템 문제
+		
+		4. 요청 시작 / 요청 진행중 / 응답 시작 / 응답 완료 	=> 확인 가능
+			: 0 ~ 4
+	
+	
+	### 비동기 코드 ( 거의 비슷비슷한 모양이니 외우도롥)
+	
+function loadDoc() {
+	-- 비동기 요청 응답 처리 js 객체
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    -- onreadystatechange 뭐시기는 응답이 오면 자동으로 감지해 함수 호출 (콜백함수 등록)
+	-- readyState => 0~4값 보유가능
+	-- 단 요청 시작(0), 요청 진행(1), 요청 완료(2), 응답 시작(3), 응답 완료(4)
+	-- status : 응답에 대한 상태값 보유 속성
+	-- responseText : 응답은 데이터를 자동으로 보유하게 되는속성 (xml빼고 다 받음)
+		(단, csv, 일반 text, json의 문자열, html형태의 문열...)
+	-- responseXML : 응답된 데이터 포맷이 xml인 경우에 한해서만 응답 데이터 보유 속성
+	 if (this.readyState == 4 && this.status == 200) {
+     document.getElementById("demo").innerHTML = this.responseText;
+    }
+  };
+  
+  xhttp.open("GET", "ajax_info.txt", true);
+  -- get방식 또는 post방식 구분, 서버의  프로그램 지정, true(비동기) 설정
+  xhttp.send();
+}
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+	
 	
 
 // input tag는 script안에 들어가면 안된다.
